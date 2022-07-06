@@ -1,0 +1,20 @@
+{
+  "name": "ImageURL for directLink Generator",
+  "short_name": "imgLink",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#3A3B50",
+  "theme_color": "#6667AB",
+  "description": "GoogleDriveやDropBoxの共有リンクから、直リンク可能な画像URLを作成します。"
+}
