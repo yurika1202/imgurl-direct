@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+@font-face {
+  src: url(./assets/font/NotoSansJP-Bold.woff2) format('woff2'), url(./assets/font/NotoSansJP-Regular.woff2) format('woff2');
+  font-family: 'NotoSansJP';
+}
+
+$ja: 'NotoSansJP', sans-serif;
+$en: 'Poppins', sans-serif;
+
+$font: (
+  font-global: $ja,
+  font-en: $en,
+);

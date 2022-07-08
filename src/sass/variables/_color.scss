@@ -1,0 +1,30 @@
+@use 'sass:color';
+@use '../functions/color' as *;
+
+// palettes
+// --------------------------------------------------------------------------
+$black: #333;
+$white: #fff;
+$gray: #868ca0;
+$brightGray: #3a3b50;
+$veryPeri: #6667ab;
+
+// color map
+// --------------------------------------------------------------------------
+$theme-colors: (
+  bg-body: $brightGray,
+  bg-contents: $white,
+  text: $black,
+  base: $brightGray,
+  accent: $veryPeri,
+  white: $white,
+  gray: $gray,
+);
+
+// color root
+// --------------------------------------------------------------------------
+:root {
+  @each $key, $color in $theme-colors {
+    --c-#{$key}: #{hexToRGB($color)};
+  }
+}

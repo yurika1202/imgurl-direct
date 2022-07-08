@@ -1,0 +1,11 @@
+@use 'sass:color';
+
+// HEXコードをRGBAへ変換
+// --------------------------------------------------------------------------
+@function hexToRGB($hex) {
+  @return color.red($hex), color.green($hex), color.blue($hex);
+}
+
+@function color($color_name, $alpha: 1) {
+  @return rgba(var(#{$color_name}), $alpha);
+}
