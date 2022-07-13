@@ -1,0 +1,11 @@
+@use '../functions/' as *;
+@use '../mixin/' as mix;
+@use '../variables/' as var;
+
+.ly_header {
+  width: 100%;
+  margin-top: 40px;
+  padding: 1em 2em;
+  border-radius: 20px;
+  background: color(--c-bg-contents);
+}
