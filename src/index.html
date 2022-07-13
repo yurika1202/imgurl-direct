@@ -11,7 +11,7 @@
     <meta property="og:title" content="ImageURL for directLink Generator" />
     <meta property="og:description" content="GoogleDriveやDropBoxの共有リンクから、直リンク可能な画像URLを作成します。" />
     <meta property="og:site_name" content="ImageURL for directLink Generator" />
-    <meta property="og:url" content="ページのURL" />
+    <meta property="og:url" content="https://yurika1202.github.io/imgurl-direct" />
     <meta property="og:image" content="ogp.png" />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:type" content="website" />
@@ -24,7 +24,123 @@
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="./script/main.js"></script>
+    <header class="ly_header">
+      <h1 class="el_title">ImageURL for direct link Generator</h1>
+    </header>
+    <!-- /.ly_header -->
+
+    <main class="ly_main">
+      <section class="ly_section bl_commonBox">
+        <h2 class="el_sectionTitle">from Google Drive</h2>
+        <button class="el_btn el_modalBtn" type="button" aria-label="使い方を見る"><img src="/assets/img/question.svg" alt="使い方" width="20" height="20" loading="lazy" /></button>
+
+        <div class="bl_generate">
+          <div class="bl_generate_inputWrap">
+            <input type="text" class="bl_generate_pasteInput" />
+            <button class="el_btn el_inputBtn el_inputBtn__generate" type="button">Go!</button>
+          </div>
+          <!-- /.bl_generate_inputWrap -->
+
+          <div class="bl_generate_inputWrap">
+            <input type="text" class="bl_generate_copyInput" />
+            <button class="el_btn el_inputBtn el_inputBtn__copy" type="button" aria-label="コピーする">
+              <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
+            </button>
+          </div>
+          <!-- /.bl_generate_inputWrap -->
+        </div>
+        <!-- /.bl_generate -->
+
+        <dialog class="bl_modalContents">
+          <button class="el_btn el_closeBtn" type="submit" aria-label="閉じる"></button>
+
+          <div class="bl_generateStep">
+            <ol class="bl_generateStep_list">
+              <li>GoogleDriveへ画像をアップロード</li>
+              <li>画像を選択し、「リンクを取得」から画像リンクをコピー</li>
+              <li>このページに戻ってきて、取得してきたリンクを貼り付ける</li>
+              <li>生成されたURLをコピー</li>
+              <li>Have fun !!!</li>
+            </ol>
+            <!-- /.bl_generateStep_list -->
+          </div>
+          <!-- /.bl_generateStep -->
+        </dialog>
+        <!-- /.bl_modalContents -->
+      </section>
+      <!-- /.ly_section -->
+
+      <section class="ly_section bl_commonBox">
+        <h2 class="el_sectionTitle">from DropBox</h2>
+        <button class="el_btn el_modalBtn" type="button" aria-label="使い方を見る"><img src="/assets/img/question.svg" alt="ジェネレータの使い方" width="20" height="20" loading="lazy" /></button>
+
+        <div class="bl_generate">
+          <div class="bl_generate_inputWrap">
+            <input type="text" class="bl_generate_pasteInput" />
+            <button class="el_btn el_inputBtn el_inputBtn__generate" type="button">Go!</button>
+          </div>
+          <!-- /.bl_generate_inputWrap -->
+
+          <div class="bl_generate_inputWrap">
+            <input type="text" class="bl_generate_copyInput" />
+            <button class="el_btn el_inputBtn el_inputBtn__copy" type="button" aria-label="コピーする">
+              <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
+            </button>
+          </div>
+          <!-- /.bl_generate_inputWrap -->
+        </div>
+        <!-- /.bl_generate -->
+
+        <dialog class="bl_modalContents">
+          <button class="el_btn el_closeBtn" type="submit" aria-label="閉じる"></button>
+
+          <div class="bl_generateStep">
+            <ol class="bl_generateStep_list">
+              <li>DropBoxへ画像をアップロード</li>
+              <li>画像を選択し、「リンクをコピー」から画像リンクをコピー</li>
+              <li>このページに戻ってきて、取得してきたリンクを貼り付ける</li>
+              <li>生成されたURLをコピー</li>
+              <li>Have fun !!!</li>
+            </ol>
+            <!-- /.bl_generateStep_list -->
+          </div>
+          <!-- /.bl_generateStep -->
+        </dialog>
+        <!-- /.bl_modalContents -->
+      </section>
+      <!-- /.ly_section -->
+
+      <div class="bl_share">
+        <a
+          href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=%E3%80%90ImageURL%20for%20direct%20link%20Generator%E3%80%91&url=https%3A%2F%2Fyurika1202.github.io%2Fimgurl-direct&via=bnku212"
+          class="el_btn el_basicBtn el_iconBtn el_iconBtn__twitter"
+          data-via="bnku212"
+          data-show-count="false"
+          >Share!</a
+        >
+      </div>
+      <!-- /.bl_share -->
+    </main>
+    <!-- /.ly_main -->
+
+    <footer class="ly_footer">
+      <div class="bl_description">
+        <p>
+          GoogleDriveやDropBoxの共有リンクから、直リンク可能な画像URLを作成する際にご利用ください。<br />
+          CodePenなどで使用できます。<br />
+          不具合やご要望等、なにかありましたらTwitterのDMへお願いいたします。
+        </p>
+      </div>
+      <!-- /.bl_description -->
+
+      <div class="bl_footer_contents">
+        <small class="el_copy">&copy; 2022 ゆりか</small>
+        <a class="el_copyLink" href="https://twitter.com/bnku212"><img src="/assets/img/twitter.svg" alt="Twitter" width="24" height="24" loading="lazy" /></a>
+      </div>
+      <!-- /.bl_footer_contents -->
+    </footer>
+    <!-- /.ly_footer -->
+
+    <script src="script/main.js"></script>
   </body>
 </html>
