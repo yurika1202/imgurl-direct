@@ -1,0 +1,9 @@
+@mixin space($class, $style) {
+  @for $i from 0 through 100 {
+    @if $i % 4 == 0 or $i % 8 == 0 {
+      #{$class + $i} {
+        #{$style}: #{$i}px;
+      }
+    }
+  }
+}

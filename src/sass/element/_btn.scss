@@ -1,0 +1,55 @@
+@use '../functions/' as *;
+@use '../variables/' as var;
+
+.el_btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.el_basicBtn {
+  padding: 0.8em 1.6em;
+  border: 2px solid color(--c-accent);
+  border-radius: 20px;
+  background: color(--c-white);
+  color: color(--c-accent);
+  font-weight: bold;
+  font-size: rem(20px);
+  font-family: font-family(font-en);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.el_iconBtn {
+  position: relative;
+  padding-left: calc(36px + 1.6em);
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 1.6em;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
+    content: '';
+  }
+
+  &__twitter {
+    &::before {
+      background: url(#{var.$img-path}twitter.svg) no-repeat center center / contain;
+    }
+  }
+}
+
+.el_inputBtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  height: 100%;
+  padding: 0 1.2em;
+  transform: translateY(-50%);
+  border-radius: 0 20px 20px 0;
+  background: color(--c-white);
+  font-weight: bold;
+  font-size: rem(20px);
+  font-family: font-family(font-en);
+}

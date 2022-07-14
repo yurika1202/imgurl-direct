@@ -25,25 +25,25 @@
     <link rel="stylesheet" href="./sass/style.scss" />
   </head>
   <body>
-    <header class="ly_header">
+    <header class="ly_common ly_header hp_mt40">
       <h1 class="el_title">ImageURL for direct link Generator</h1>
     </header>
     <!-- /.ly_header -->
 
-    <main class="ly_main">
+    <main class="ly_main hp_mt80">
       <section class="ly_section bl_commonBox">
-        <h2 class="el_sectionTitle">from Google Drive</h2>
-        <button class="el_btn el_modalBtn" type="button" aria-label="使い方を見る"><img src="/assets/img/question.svg" alt="使い方" width="20" height="20" loading="lazy" /></button>
+        <h2 class="el_sectionTitle"><span>from</span> Google Drive</h2>
+        <button class="el_btn el_modalBtn hp_ml24" type="button" aria-label="使い方を見る"><img src="/assets/img/question.svg" alt="使い方" width="20" height="20" loading="lazy" /></button>
 
-        <div class="bl_generate">
+        <div class="bl_generate hp_mt24">
           <div class="bl_generate_inputWrap">
-            <input type="text" class="bl_generate_pasteInput" />
+            <input type="url" class="bl_generate_input bl_generate_input__paste" autofocus placeholder="Paste URL" />
             <button class="el_btn el_inputBtn el_inputBtn__generate" type="button">Go!</button>
           </div>
           <!-- /.bl_generate_inputWrap -->
 
           <div class="bl_generate_inputWrap">
-            <input type="text" class="bl_generate_copyInput" />
+            <input type="text" class="bl_generate_input bl_generate_input__copy" readonly />
             <button class="el_btn el_inputBtn el_inputBtn__copy" type="button" aria-label="コピーする">
               <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
             </button>
@@ -72,18 +72,20 @@
       <!-- /.ly_section -->
 
       <section class="ly_section bl_commonBox">
-        <h2 class="el_sectionTitle">from DropBox</h2>
-        <button class="el_btn el_modalBtn" type="button" aria-label="使い方を見る"><img src="/assets/img/question.svg" alt="ジェネレータの使い方" width="20" height="20" loading="lazy" /></button>
+        <h2 class="el_sectionTitle"><span>from</span> DropBox</h2>
+        <button class="el_btn el_modalBtn hp_ml24" type="button" aria-label="使い方を見る">
+          <img src="/assets/img/question.svg" alt="ジェネレータの使い方" width="20" height="20" loading="lazy" />
+        </button>
 
-        <div class="bl_generate">
+        <div class="bl_generate hp_mt24">
           <div class="bl_generate_inputWrap">
-            <input type="text" class="bl_generate_pasteInput" />
+            <input type="url" class="bl_generate_input bl_generate_input__paste" autofocus placeholder="Paste URL" />
             <button class="el_btn el_inputBtn el_inputBtn__generate" type="button">Go!</button>
           </div>
           <!-- /.bl_generate_inputWrap -->
 
           <div class="bl_generate_inputWrap">
-            <input type="text" class="bl_generate_copyInput" />
+            <input type="text" class="bl_generate_input bl_generate_input__copy" readonly />
             <button class="el_btn el_inputBtn el_inputBtn__copy" type="button" aria-label="コピーする">
               <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
             </button>
@@ -117,6 +119,7 @@
           class="el_btn el_basicBtn el_iconBtn el_iconBtn__twitter"
           data-via="bnku212"
           data-show-count="false"
+          target="_blank"
           >Share!</a
         >
       </div>
@@ -124,7 +127,7 @@
     </main>
     <!-- /.ly_main -->
 
-    <footer class="ly_footer">
+    <footer class="ly_common ly_footer hp_mt80 hp_mb72">
       <div class="bl_description">
         <p>
           GoogleDriveやDropBoxの共有リンクから、直リンク可能な画像URLを作成する際にご利用ください。<br />
@@ -134,11 +137,11 @@
       </div>
       <!-- /.bl_description -->
 
-      <div class="bl_footer_contents">
+      <div class="ly_footer_contents hp_ml24">
         <small class="el_copy">&copy; 2022 ゆりか</small>
-        <a class="el_copyLink" href="https://twitter.com/bnku212"><img src="/assets/img/twitter.svg" alt="Twitter" width="24" height="24" loading="lazy" /></a>
+        <a class="el_copyLink" href="https://twitter.com/bnku212" target="_blank"><img src="/assets/img/twitter.svg" alt="Twitter" width="24" height="24" loading="lazy" /></a>
       </div>
-      <!-- /.bl_footer_contents -->
+      <!-- /.ly_footer_contents -->
     </footer>
     <!-- /.ly_footer -->
 

@@ -1,7 +1,12 @@
-@use '../functions/' as *;
-@use '../mixin/' as mix;
-@use '../variables/' as var;
-
 .ly_footer {
-  @extend .ly_header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ly_footer_contents {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1em;
 }

@@ -1,0 +1,38 @@
+@use '../functions/' as *;
+@use '../variables/' as var;
+
+.bl_generate {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.bl_generate_inputWrap {
+  position: relative;
+
+  &:nth-of-type(even) {
+    &::before {
+      position: absolute;
+      top: -48px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translateX(-50%);
+      background: url(#{var.$img-path}triangle.svg) no-repeat center center / contain;
+      content: '';
+    }
+  }
+}
+
+.bl_generate_input {
+  width: 100%;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: color(--c-white);
+  font-family: font-family(font-en);
+
+  &::placeholder {
+    color: color(--c-gray);
+    font-weight: bold;
+  }
+}

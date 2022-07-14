@@ -1,0 +1,13 @@
+@use '../mixin/space' as *;
+
+// padding
+@include space('.hp_pt', 'padding-top');
+@include space('.hp_pb', 'padding-bottom');
+@include space('.hp_pl', 'padding-left');
+@include space('.hp_pr', 'padding-right');
+
+// margin
+@include space('.hp_mt', 'margin-top');
+@include space('.hp_mb', 'margin-bottom');
+@include space('.hp_ml', 'margin-left');
+@include space('.hp_mr', 'margin-right');

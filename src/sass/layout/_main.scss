@@ -1,0 +1,8 @@
+.ly_main {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 5.41vw;
+  row-gap: 100px;
+  padding: 0 3.75vw;
+}
