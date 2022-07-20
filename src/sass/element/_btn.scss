@@ -53,3 +53,42 @@
   font-size: rem(20px);
   font-family: font-family(font-en);
 }
+
+.el_closeBtn {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-top: 1.5em;
+  margin-left: auto;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    transform: translate(-50%, -50%);
+    border: 2px solid color(--c-accent);
+    border-radius: 50%;
+    content: '';
+  }
+
+  > span {
+    display: inline-block;
+    position: absolute;
+    top: 36%;
+    left: 48%;
+    width: 2px;
+    height: 12px;
+    background: color(--c-accent);
+
+    &:nth-of-type(1) {
+      transform: rotate(45deg);
+    }
+
+    &:nth-of-type(2) {
+      transform: rotate(-45deg);
+    }
+  }
+}
