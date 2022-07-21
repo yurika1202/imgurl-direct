@@ -50,20 +50,27 @@
         </dialog>
         <!-- /.bl_dialogContents -->
 
-        <div class="bl_generate hp_mt24">
-          <div class="bl_generate_inputWrap">
-            <input type="url" class="bl_generate_input bl_generate_input__paste" autofocus placeholder="Paste URL" />
-            <button class="el_btn el_inputBtn el_inputBtn__generate" type="button">Go!</button>
+        <div class="bl_generate __google hp_mt24">
+          <div class="bl_generate_contents">
+            <div class="bl_generate_inputWrap">
+              <input type="url" class="bl_generate_input bl_generate_input__paste js_generate_pasteInput" autofocus placeholder="Paste URL" />
+              <button class="el_btn el_inputBtn el_inputBtn__generate js_generate_executionBtn" type="button">Go!</button>
+            </div>
+            <!-- /.bl_generate_inputWrap -->
+            <p class="bl_generate_errorMsg js_generate_error"></p>
           </div>
-          <!-- /.bl_generate_inputWrap -->
+          <!-- /.bl_generate_contents -->
 
-          <div class="bl_generate_inputWrap">
-            <input type="text" class="bl_generate_input bl_generate_input__copy" readonly />
-            <button class="el_btn el_inputBtn el_inputBtn__copy" type="button" aria-label="コピーする">
-              <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
-            </button>
+          <div class="bl_generate_contents">
+            <div class="bl_generate_inputWrap">
+              <input type="text" class="bl_generate_input bl_generate_input__copy js_generate_copyInput" readonly />
+              <button class="el_btn el_inputBtn el_inputBtn__copy js_generate_copyBtn" type="button" aria-label="コピーする">
+                <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
+              </button>
+            </div>
+            <!-- /.bl_generate_inputWrap -->
           </div>
-          <!-- /.bl_generate_inputWrap -->
+          <!-- /.bl_generate_contents -->
         </div>
         <!-- /.bl_generate -->
       </section>
@@ -88,20 +95,27 @@
         </dialog>
         <!-- /.bl_dialogContents -->
 
-        <div class="bl_generate hp_mt24">
-          <div class="bl_generate_inputWrap">
-            <input type="url" class="bl_generate_input bl_generate_input__paste" autofocus placeholder="Paste URL" />
-            <button class="el_btn el_inputBtn el_inputBtn__generate" type="button">Go!</button>
+        <div class="bl_generate __dropbox hp_mt24">
+          <div class="bl_generate_contents">
+            <div class="bl_generate_inputWrap">
+              <input type="url" class="bl_generate_input bl_generate_input__paste js_generate_pasteInput" autofocus placeholder="Paste URL" />
+              <button class="el_btn el_inputBtn el_inputBtn__generate js_generate_executionBtn" type="button">Go!</button>
+            </div>
+            <!-- /.bl_generate_inputWrap -->
+            <p class="bl_generate_errorMsg js_generate_error">DropBoxから取得したリンクではないようです &#128546;</p>
           </div>
-          <!-- /.bl_generate_inputWrap -->
 
-          <div class="bl_generate_inputWrap">
-            <input type="text" class="bl_generate_input bl_generate_input__copy" readonly />
-            <button class="el_btn el_inputBtn el_inputBtn__copy" type="button" aria-label="コピーする">
-              <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
-            </button>
+          <div class="bl_generate_contents">
+            <div class="bl_generate_inputWrap">
+              <input type="text" class="bl_generate_input bl_generate_input__copy js_generate_copyInput" readonly />
+              <button class="el_btn el_inputBtn el_inputBtn__copy js_generate_copyBtn" type="button" aria-label="コピーする">
+                <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
+              </button>
+            </div>
+            <!-- /.bl_generate_inputWrap -->
           </div>
-          <!-- /.bl_generate_inputWrap -->
+          <!-- /.bl_generate_contents -->
+          <!-- /.bl_generate_contents -->
         </div>
         <!-- /.bl_generate -->
       </section>

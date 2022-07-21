@@ -36,3 +36,13 @@
     font-weight: bold;
   }
 }
+
+.bl_generate_errorMsg {
+  display: none;
+  padding: 0.5em;
+  font-weight: bold;
+
+  &.is_display {
+    display: block;
+  }
+}
