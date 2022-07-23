@@ -9,54 +9,74 @@ class Generate {
   }
 
   action() {
-    this.getValue();
+    this.replaceAction();
   }
 
-  getValue() {
+  replaceAction() {
+    // 実行ボタンをクリックでイベント発火
     this.executionBtn.forEach(target => {
       target.addEventListener('click', e => {
         this.val = e.target.previousElementSibling.value;
-
-        // GoogleDrive
-        if (e.target.closest('.__google')) {
-          this.errorMsg[0].classList.remove('is_display');
-
-          if (this.val === '') {
-            this.errorMsg[0].innerHTML = 'URLを入力してください &#128591';
-            this.errorMsg[0].classList.add('is_display');
-          } else if (!/^https:\/\/drive\.google\.com.*$/.test(this.val)) {
-            this.errorMsg[0].innerHTML = 'GoogleDriveから取得したリンクではないようです &#128546';
-            this.errorMsg[0].classList.add('is_display');
-          } else if (!/^https:\/\/drive\.google\.com\/file\/.+$/.test(this.val)) {
-            this.errorMsg[0].innerHTML = 'ファイル形式が正しくないようです &#128546';
-            this.errorMsg[0].classList.add('is_display');
-          } else {
-            const id = /(?<=\/d\/).*?(?=\/view)/.exec(this.val);
-            const replaceUrl = this.val.replace(/(?<=https:\/\/drive\.google\.com\/).*$/, `uc?export=view&id=${id}`);
-            this.copyInput[0].value = replaceUrl;
-          }
-        }
-
-        // DropBox
-        if (e.target.closest('.__dropbox')) {
-          this.errorMsg[1].classList.remove('is_display');
-
-          if (this.val === '') {
-            this.errorMsg[1].innerHTML = 'URLを入力してください &#128591';
-            this.errorMsg[1].classList.add('is_display');
-          } else if (!/^https:\/\/www\.dropbox\.com.*$/.test(this.val)) {
-            this.errorMsg[1].innerHTML = 'DropBoxから取得したリンクではないようです &#128546';
-            this.errorMsg[1].classList.add('is_display');
-          } else if (!/^https:\/\/www\.dropbox\.com.*\/s\/.+$/.test(this.val)) {
-            this.errorMsg[1].innerHTML = 'ファイル形式が正しくないようです &#128546';
-            this.errorMsg[1].classList.add('is_display');
-          } else {
-            const replaceUrl = this.val.replace(/(?<=https:\/\/).*?(?=\.dropbox)/, `dl`);
-            this.copyInput[1].value = replaceUrl;
-          }
-        }
+        this.replace(e.target, this.val);
       });
     });
+
+    this.pasteInput.forEach(target => {
+      // Enterキーでイベント発火
+      target.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          this.val = e.target.value;
+          this.replace(e.target, this.val);
+        }
+      });
+
+      // inputからフォーカスが外れたらイベント発火
+      target.addEventListener('blur', e => {
+        this.val = e.target.value;
+        this.replace(e.target, this.val);
+      });
+    });
+  }
+
+  replace(target, val) {
+    // GoogleDrive
+    if (target.closest('.__google')) {
+      this.errorMsg[0].classList.remove('is_display');
+
+      if (val === '') {
+        this.errorMsg[0].innerHTML = 'URLを入力してください &#128591';
+        this.errorMsg[0].classList.add('is_display');
+      } else if (!/^https:\/\/drive\.google\.com.*$/.test(val)) {
+        this.errorMsg[0].innerHTML = 'GoogleDriveから取得したリンクではないようです &#128546';
+        this.errorMsg[0].classList.add('is_display');
+      } else if (!/^https:\/\/drive\.google\.com\/file\/.+$/.test(val)) {
+        this.errorMsg[0].innerHTML = 'ファイル形式が正しくないようです &#128546';
+        this.errorMsg[0].classList.add('is_display');
+      } else {
+        const id = /(?<=\/d\/).*?(?=\/view)/.exec(val);
+        const replaceUrl = val.replace(/(?<=https:\/\/drive\.google\.com\/).*$/, `uc?export=view&id=${id}`);
+        this.copyInput[0].value = replaceUrl;
+      }
+    }
+
+    // DropBox
+    if (target.closest('.__dropbox')) {
+      this.errorMsg[1].classList.remove('is_display');
+
+      if (val === '') {
+        this.errorMsg[1].innerHTML = 'URLを入力してください &#128591';
+        this.errorMsg[1].classList.add('is_display');
+      } else if (!/^https:\/\/www\.dropbox\.com.*$/.test(val)) {
+        this.errorMsg[1].innerHTML = 'DropBoxから取得したリンクではないようです &#128546';
+        this.errorMsg[1].classList.add('is_display');
+      } else if (!/^https:\/\/www\.dropbox\.com.*\/s\/.+$/.test(val)) {
+        this.errorMsg[1].innerHTML = 'ファイル形式が正しくないようです &#128546';
+        this.errorMsg[1].classList.add('is_display');
+      } else {
+        const replaceUrl = val.replace(/(?<=https:\/\/).*?(?=\.dropbox)/, `dl`);
+        this.copyInput[1].value = replaceUrl;
+      }
+    }
   }
 }
 
