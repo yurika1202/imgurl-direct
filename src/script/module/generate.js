@@ -15,9 +15,9 @@ class Generate {
   replaceAction() {
     // 実行ボタンをクリックでイベント発火
     this.executionBtn.forEach(target => {
-      target.addEventListener('click', e => {
-        const input = e.target.previousElementSibling;
-        this.replace(e.target, input.value);
+      target.addEventListener('click', () => {
+        const input = target.previousElementSibling;
+        this.replace(target, input.value);
       });
     });
 
@@ -25,7 +25,7 @@ class Generate {
     this.pasteInput.forEach(target => {
       target.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
-          this.replace(e.target, e.target.value);
+          this.replace(target, target.value);
         }
       });
     });
