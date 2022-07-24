@@ -9,6 +9,7 @@ class Generate {
 
   action() {
     this.replaceAction();
+    this.copy();
   }
 
   replaceAction() {
@@ -68,6 +69,24 @@ class Generate {
         const replaceUrl = val.replace(/(?<=https:\/\/).*?(?=\.dropbox)/, `dl`);
         this.copyInput[1].value = replaceUrl;
       }
+    }
+  }
+
+  copy() {
+    for (const target of this.copyBtn) {
+      target.addEventListener('click', () => {
+        const input = target.previousElementSibling;
+        if (input.value !== '') {
+          navigator.clipboard
+            .writeText(input.value)
+            .then(() => {
+              console.log('ok');
+            })
+            .catch(error => {
+              console.log('ng');
+            });
+        }
+      });
     }
   }
 }
