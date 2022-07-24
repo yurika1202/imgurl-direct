@@ -54,6 +54,47 @@
   font-family: font-family(font-en);
 }
 
+.el_copyBtn {
+  &::before,
+  &::after {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+  }
+
+  &::before {
+    position: absolute;
+    top: -40%;
+    padding: 0.25em 0.75em;
+    border-radius: 10px;
+    background: color(--c-base);
+    content: 'Copied!';
+    color: color(--c-white);
+    font-weight: 500;
+    font-size: rem(16px);
+  }
+
+  &::after {
+    display: inline-block;
+    position: absolute;
+    top: 5%;
+    width: 0;
+    height: 0;
+    border-width: 12px 12px 0 12px;
+    border-style: solid;
+    border-color: color(--c-base) transparent transparent transparent;
+    content: '';
+  }
+
+  &.is_display {
+    &::before,
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
 .el_closeBtn {
   display: block;
   position: relative;
