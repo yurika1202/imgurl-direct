@@ -5,7 +5,6 @@ class Generate {
     this.copyInput = document.body.querySelectorAll('.js_generate_copyInput');
     this.copyBtn = document.body.querySelectorAll('.js_generate_copyBtn');
     this.errorMsg = document.body.querySelectorAll('.js_generate_error');
-    this.val = '';
   }
 
   action() {
@@ -16,24 +15,17 @@ class Generate {
     // 実行ボタンをクリックでイベント発火
     this.executionBtn.forEach(target => {
       target.addEventListener('click', e => {
-        this.val = e.target.previousElementSibling.value;
-        this.replace(e.target, this.val);
+        const input = e.target.previousElementSibling;
+        this.replace(e.target, input.value);
       });
     });
 
+    // Enterキーでイベント発火
     this.pasteInput.forEach(target => {
-      // Enterキーでイベント発火
       target.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
-          this.val = e.target.value;
-          this.replace(e.target, this.val);
+          this.replace(e.target, e.target.value);
         }
-      });
-
-      // inputからフォーカスが外れたらイベント発火
-      target.addEventListener('blur', e => {
-        this.val = e.target.value;
-        this.replace(e.target, this.val);
       });
     });
   }
