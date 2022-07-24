@@ -4,7 +4,7 @@ class Generate {
     this.executionBtn = document.body.querySelectorAll('.js_generate_executionBtn');
     this.copyInput = document.body.querySelectorAll('.js_generate_copyInput');
     this.copyBtn = document.body.querySelectorAll('.js_generate_copyBtn');
-    this.errorMsg = document.body.querySelectorAll('.js_generate_error');
+    this.errorMsg = document.body.querySelectorAll('.js_generate_pasteError');
   }
 
   action() {
@@ -80,10 +80,15 @@ class Generate {
           navigator.clipboard
             .writeText(input.value)
             .then(() => {
-              console.log('ok');
+              target.classList.add('is_display');
+              setTimeout(() => {
+                target.classList.remove('is_display');
+              }, 2000);
             })
             .catch(error => {
-              console.log('ng');
+              const errorMsg = target.parentElement.nextElementSibling;
+              errorMsg.classList.add('is_display');
+              console.error(error);
             });
         }
       });
