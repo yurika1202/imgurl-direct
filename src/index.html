@@ -57,7 +57,7 @@
               <button class="el_btn el_inputBtn el_inputBtn__generate js_generate_executionBtn" type="button">Go!</button>
             </div>
             <!-- /.bl_generate_inputWrap -->
-            <p class="bl_generate_errorMsg js_generate_error"></p>
+            <p class="bl_generate_errorMsg bl_generate_errorMsg__paste js_generate_pasteError"></p>
           </div>
           <!-- /.bl_generate_contents -->
 
@@ -69,6 +69,7 @@
               </button>
             </div>
             <!-- /.bl_generate_inputWrap -->
+            <p class="bl_generate_errorMsg bl_generate_errorMsg__copy js_generate_copyError">正常にコピーが実行できませんでした &#128557;</p>
           </div>
           <!-- /.bl_generate_contents -->
         </div>
@@ -102,17 +103,21 @@
               <button class="el_btn el_inputBtn el_inputBtn__generate js_generate_executionBtn" type="button">Go!</button>
             </div>
             <!-- /.bl_generate_inputWrap -->
-            <p class="bl_generate_errorMsg js_generate_error">DropBoxから取得したリンクではないようです &#128546;</p>
+            <p class="bl_generate_errorMsg bl_generate_errorMsg__paste js_generate_pasteError"></p>
           </div>
 
           <div class="bl_generate_contents">
-            <div class="bl_generate_inputWrap">
-              <input type="text" class="bl_generate_input bl_generate_input__copy js_generate_copyInput" readonly />
-              <button class="el_btn el_inputBtn el_copyBtn js_generate_copyBtn" type="button" aria-label="コピーする">
-                <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
-              </button>
+            <div class="bl_generate_contents">
+              <div class="bl_generate_inputWrap">
+                <input type="text" class="bl_generate_input bl_generate_input__copy js_generate_copyInput" readonly />
+                <button class="el_btn el_inputBtn el_copyBtn js_generate_copyBtn" type="button" aria-label="コピーする">
+                  <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
+                </button>
+              </div>
+              <p class="bl_generate_errorMsg bl_generate_errorMsg__copy js_generate_copyError">正常にコピーが実行できませんでした &#128557;</p>
+              <!-- /.bl_generate_inputWrap -->
             </div>
-            <!-- /.bl_generate_inputWrap -->
+            <!-- /.bl_generate_contents -->
           </div>
           <!-- /.bl_generate_contents -->
           <!-- /.bl_generate_contents -->
