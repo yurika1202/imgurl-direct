@@ -4,6 +4,6 @@ $max-width: 1280px;
 
 // font
 // --------------------------------------------------------------------------
-$headingLv1: 32px;
-$headingLv2: 24px;
+$headingLv1: clamp(24px, 6.4vw, 32px);
+$headingLv2: clamp(18px, 4.8vw, 24px);
 $headingLv3: 20px;

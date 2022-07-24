@@ -1,3 +1,8 @@
 .ly_section {
   position: relative;
 }
+
+.ly_section_header {
+  display: flex;
+  align-items: center;
+}

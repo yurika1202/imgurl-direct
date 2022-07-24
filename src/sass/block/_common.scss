@@ -1,7 +1,7 @@
 @use '../functions/' as *;
 
 .bl_commonBox {
-  padding: 24px 32px 64px;
+  padding: 24px min(5.71vw, 32px) 64px;
   border-radius: 20px;
   background: color(--c-accent);
 }

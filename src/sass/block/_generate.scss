@@ -7,6 +7,23 @@
   gap: 72px;
 }
 
+.bl_generate_contents {
+  position: relative;
+
+  &:nth-of-type(odd) {
+    &::before {
+      position: absolute;
+      bottom: -48px;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      transform: translateX(-50%);
+      background: url(#{var.$img-path}triangle.svg) no-repeat center center / contain;
+      content: '';
+    }
+  }
+}
+
 .bl_generate_inputWrap {
   position: relative;
 

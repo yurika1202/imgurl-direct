@@ -1,6 +1,10 @@
 @use '../functions/' as *;
+@use '../mixin/' as mix;
 
 .bl_share {
-  grid-area: 2 / 1 / 3 / 3;
   text-align: center;
+
+  @include mix.mq(lg) {
+    grid-area: 2 / 1 / 3 / 3;
+  }
 }

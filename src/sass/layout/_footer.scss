@@ -1,7 +1,16 @@
+@use '../mixin/' as mix;
+
 .ly_footer {
   display: flex;
+  row-gap: 40px;
+  grid-row: 40px;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @include mix.mq(lg) {
+    flex-direction: row;
+  }
 }
 
 .ly_footer_contents {

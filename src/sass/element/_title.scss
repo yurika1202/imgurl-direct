@@ -11,11 +11,12 @@
 .el_sectionTitle {
   @extend .el_title;
   display: inline;
+  flex-shrink: 0;
   color: color(--c-white);
   font-size: var.$headingLv2;
 
   > span {
     font-weight: bold;
-    font-size: rem(20px);
+    font-size: 0.8em;
   }
 }

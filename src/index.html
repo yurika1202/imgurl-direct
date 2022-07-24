@@ -32,23 +32,25 @@
 
     <main class="ly_main hp_mt80">
       <section class="ly_section bl_commonBox">
-        <h2 class="el_sectionTitle"><span>from</span> Google Drive</h2>
-        <button class="el_btn el_dialogBtn hp_ml24 js_dialog_openBtn" type="button" aria-label="使い方を見る">
-          <img src="/assets/img/question.svg" alt="ジェネレータの使い方" width="20" height="20" loading="lazy" />
-        </button>
-
-        <dialog class="bl_dialogContents js_dialogContents" open="false">
-          <button class="el_btn el_closeBtn js_dialog_closeBtn" type="submit" aria-label="閉じる"><span></span><span></span></button>
-          <ol class="bl_dialog_generateStep">
-            <li>GoogleDriveへ画像をアップロード</li>
-            <li>画像を選択し、「リンクを取得」から画像リンクをコピー</li>
-            <li>このページに戻ってきて、取得してきたリンクを貼り付ける</li>
-            <li>生成されたURLをコピー</li>
-          </ol>
-          <!-- /.bl_dialog_generateStep -->
-          <p class="bl_dialog_message">Have fun !!!</p>
-        </dialog>
-        <!-- /.bl_dialogContents -->
+        <div class="ly_section_header">
+          <h2 class="el_sectionTitle"><span>from</span> Google Drive</h2>
+          <button class="el_btn el_dialogBtn hp_ml24 js_dialog_openBtn" type="button" aria-label="使い方を見る">
+            <img src="/assets/img/question.svg" alt="ジェネレータの使い方" width="20" height="20" loading="lazy" />
+          </button>
+          <dialog class="bl_dialogContents js_dialogContents" open="false">
+            <button class="el_btn el_closeBtn js_dialog_closeBtn" type="submit" aria-label="閉じる"><span></span><span></span></button>
+            <ol class="bl_dialog_generateStep">
+              <li>GoogleDriveへ画像をアップロード</li>
+              <li>画像を選択し、「リンクを取得」から画像リンクをコピー</li>
+              <li>このページに戻ってきて、取得してきたリンクを貼り付ける</li>
+              <li>生成されたURLをコピー</li>
+            </ol>
+            <!-- /.bl_dialog_generateStep -->
+            <p class="bl_dialog_message">Have fun !!!</p>
+          </dialog>
+          <!-- /.bl_dialogContents -->
+        </div>
+        <!-- /.ly_section_header -->
 
         <div class="bl_generate __google hp_mt24">
           <div class="bl_generate_contents">
@@ -78,23 +80,26 @@
       <!-- /.ly_section -->
 
       <section class="ly_section bl_commonBox">
-        <h2 class="el_sectionTitle"><span>from</span> DropBox</h2>
-        <button class="el_btn el_dialogBtn hp_ml24 js_dialog_openBtn" type="button" aria-label="使い方を見る">
-          <img src="/assets/img/question.svg" alt="ジェネレータの使い方" width="20" height="20" loading="lazy" />
-        </button>
+        <div class="ly_section_header">
+          <h2 class="el_sectionTitle"><span>from</span> DropBox</h2>
+          <button class="el_btn el_dialogBtn hp_ml24 js_dialog_openBtn" type="button" aria-label="使い方を見る">
+            <img src="/assets/img/question.svg" alt="ジェネレータの使い方" width="20" height="20" loading="lazy" />
+          </button>
 
-        <dialog class="bl_dialogContents js_dialogContents" open="false">
-          <button class="el_btn el_closeBtn js_dialog_closeBtn" type="submit" aria-label="閉じる"><span></span><span></span></button>
-          <ol class="bl_dialog_generateStep">
-            <li>DropBoxへ画像をアップロード</li>
-            <li>画像を選択し、「リンクをコピー」から画像リンクをコピー</li>
-            <li>このページに戻ってきて、取得してきたリンクを貼り付ける</li>
-            <li>生成されたURLをコピー</li>
-          </ol>
-          <!-- /.bl_dialog_generateStep -->
-          <p class="bl_dialog_message">Have fun !!!</p>
-        </dialog>
-        <!-- /.bl_dialogContents -->
+          <dialog class="bl_dialogContents js_dialogContents" open="false">
+            <button class="el_btn el_closeBtn js_dialog_closeBtn" type="submit" aria-label="閉じる"><span></span><span></span></button>
+            <ol class="bl_dialog_generateStep">
+              <li>DropBoxへ画像をアップロード</li>
+              <li>画像を選択し、「リンクをコピー」から画像リンクをコピー</li>
+              <li>このページに戻ってきて、取得してきたリンクを貼り付ける</li>
+              <li>生成されたURLをコピー</li>
+            </ol>
+            <!-- /.bl_dialog_generateStep -->
+            <p class="bl_dialog_message">Have fun !!!</p>
+          </dialog>
+          <!-- /.bl_dialogContents -->
+        </div>
+        <!-- /.ly_section_header -->
 
         <div class="bl_generate __dropbox hp_mt24">
           <div class="bl_generate_contents">
@@ -107,19 +112,15 @@
           </div>
 
           <div class="bl_generate_contents">
-            <div class="bl_generate_contents">
-              <div class="bl_generate_inputWrap">
-                <input type="text" class="bl_generate_input bl_generate_input__copy js_generate_copyInput" readonly />
-                <button class="el_btn el_inputBtn el_copyBtn js_generate_copyBtn" type="button" aria-label="コピーする">
-                  <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
-                </button>
-              </div>
-              <p class="bl_generate_errorMsg bl_generate_errorMsg__copy js_generate_copyError">正常にコピーが実行できませんでした &#128557;</p>
-              <!-- /.bl_generate_inputWrap -->
+            <div class="bl_generate_inputWrap">
+              <input type="text" class="bl_generate_input bl_generate_input__copy js_generate_copyInput" readonly />
+              <button class="el_btn el_inputBtn el_copyBtn js_generate_copyBtn" type="button" aria-label="コピーする">
+                <img src="/assets/img/copy.svg" alt="URLのコピー" width="24" height="24" loading="lazy" />
+              </button>
             </div>
-            <!-- /.bl_generate_contents -->
+            <p class="bl_generate_errorMsg bl_generate_errorMsg__copy js_generate_copyError">正常にコピーが実行できませんでした &#128557;</p>
+            <!-- /.bl_generate_inputWrap -->
           </div>
-          <!-- /.bl_generate_contents -->
           <!-- /.bl_generate_contents -->
         </div>
         <!-- /.bl_generate -->

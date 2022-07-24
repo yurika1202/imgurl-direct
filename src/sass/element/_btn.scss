@@ -40,6 +40,10 @@
   }
 }
 
+.el_dialogBtn {
+  flex-shrink: 0;
+}
+
 .el_inputBtn {
   position: absolute;
   top: 50%;

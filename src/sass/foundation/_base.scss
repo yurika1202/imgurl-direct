@@ -1,4 +1,6 @@
 @use '../functions/' as *;
+@use '../mixin/' as mix;
+@use '../variables/' as var;
 
 body {
   -webkit-text-size-adjust: 100%;
@@ -7,6 +9,7 @@ body {
   z-index: 0;
   position: relative;
   flex-direction: column;
+  max-width: var.$max-width;
   min-height: 100vh;
   margin: 0 5.56vw;
   overflow-x: hidden;
@@ -16,6 +19,10 @@ body {
   line-height: 1.75;
   font-family: font-family(font-global);
   letter-spacing: 0.1em;
+
+  @include mix.mq(xxl) {
+    margin: 0 auto;
+  }
 }
 
 @supports (min-height: 100dvh) {
