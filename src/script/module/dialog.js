@@ -2,9 +2,9 @@ class Dialog {
   constructor() {
     this.dialog = document.body.querySelector('.js_dialog');
     this.openBtn = document.body.querySelectorAll('.js_dialog_openBtn');
-    this.closeBtn = document.body.querySelectorAll('.js_dialog_closeBtn');
+    this.closeBtn = document.getElementById('js_dialog_closeBtn');
     this.dialogContents = document.body.querySelector('.js_dialog_contents');
-    this.dialogContentsHTML = '';
+    this.outArea = document.querySelectorAll('.js_dialog_outArea');
     this.fragment = document.createDocumentFragment();
   }
 
@@ -16,17 +16,40 @@ class Dialog {
     for (const targetBtn of this.openBtn) {
       targetBtn.addEventListener('click', () => {
         this.createContents(targetBtn);
-        this.dialog.setAttribute('open', 'true');
+        this.dialog.setAttribute('open', true);
+        this.setOutArea();
       });
     }
     this.close();
   }
 
   close() {
-    for (const targetBtn of this.closeBtn) {
-      targetBtn.addEventListener('click', () => {
-        this.dialog.setAttribute('open', 'false');
-      });
+    this.closeBtn.addEventListener('click', () => {
+      this.dialog.setAttribute('open', false);
+      this.setOutArea();
+    });
+  }
+
+  setOutArea() {
+    if (this.dialog.getAttribute('open') === 'true') {
+      for (const outParents of this.outArea) {
+        outParents.style.setProperty('pointer-events', 'none');
+        outParents.setAttribute('aria-hidden', true);
+
+        const outAreaBtn = outParents.querySelectorAll('button');
+        const outAreaInput = outParents.querySelectorAll('input');
+        for (const outBtn of outAreaBtn) {
+          outBtn.setAttribute('tabindex', -1);
+        }
+        for (const outInput of outAreaInput) {
+          outInput.setAttribute('tabindex', -1);
+        }
+      }
+      setTimeout(() => {
+        this.closeBtn.focus();
+      }, 0);
+    } else {
+      console.log('false');
     }
   }
 
