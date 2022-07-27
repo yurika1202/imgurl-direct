@@ -28,6 +28,13 @@ class Dialog {
       this.dialog.close();
       this.setOutArea();
     });
+
+    window.addEventListener('keydown', e => {
+      if (this.dialog.open && e.key === 'Escape') {
+        this.dialog.close();
+        this.setOutArea();
+      }
+    });
   }
 
   setOutArea() {
