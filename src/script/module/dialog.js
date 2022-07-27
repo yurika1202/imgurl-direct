@@ -6,6 +6,7 @@ class Dialog {
     this.dialogContents = document.body.querySelector('.js_dialog_contents');
     this.outArea = document.querySelectorAll('.js_dialog_outArea');
     this.fragment = document.createDocumentFragment();
+    this.scrollPosition = '';
   }
 
   action() {
@@ -16,9 +17,11 @@ class Dialog {
   open() {
     for (const targetBtn of this.openBtn) {
       targetBtn.addEventListener('click', () => {
+        this.scrollPosition = window.scrollY;
         this.createContents(targetBtn);
         this.dialog.showModal();
         this.setOutArea();
+        this.fixBody();
       });
     }
   }
@@ -27,12 +30,14 @@ class Dialog {
     this.closeBtn.addEventListener('click', () => {
       this.dialog.close();
       this.setOutArea();
+      this.fixBody();
     });
 
     window.addEventListener('keydown', e => {
       if (this.dialog.open && e.key === 'Escape') {
         this.dialog.close();
         this.setOutArea();
+        this.fixBody();
       }
     });
   }
@@ -89,6 +94,18 @@ class Dialog {
       this.fragment.children[2].textContent = 'このページに戻ってきて、取得してきたリンクを貼り付ける';
       this.fragment.children[3].textContent = '生成されたURLをコピー';
       this.dialogContents.append(this.fragment);
+    }
+  }
+
+  fixBody() {
+    const html = document.querySelector('html');
+    if (this.dialog.open) {
+      html.style.position = 'fixed';
+      html.style.top = `${this.scrollPosition * -1}px`;
+    } else {
+      html.style.position = '';
+      html.style.top = '';
+      window.scrollTo(0, this.scrollPosition);
     }
   }
 }

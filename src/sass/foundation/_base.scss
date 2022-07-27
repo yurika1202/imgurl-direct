@@ -2,6 +2,11 @@
 @use '../mixin/' as mix;
 @use '../variables/' as var;
 
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
   -webkit-text-size-adjust: 100%;
   font-feature-settings: 'palt' 1;
