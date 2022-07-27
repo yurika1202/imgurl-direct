@@ -10,46 +10,53 @@ class Dialog {
 
   action() {
     this.open();
+    this.close();
   }
 
   open() {
     for (const targetBtn of this.openBtn) {
       targetBtn.addEventListener('click', () => {
         this.createContents(targetBtn);
-        this.dialog.setAttribute('open', true);
+        this.dialog.showModal();
         this.setOutArea();
       });
     }
-    this.close();
   }
 
   close() {
     this.closeBtn.addEventListener('click', () => {
-      this.dialog.setAttribute('open', false);
+      this.dialog.close();
       this.setOutArea();
     });
   }
 
   setOutArea() {
-    if (this.dialog.getAttribute('open') === 'true') {
-      for (const outParents of this.outArea) {
-        outParents.style.setProperty('pointer-events', 'none');
-        outParents.setAttribute('aria-hidden', true);
+    for (const targetArea of this.outArea) {
+      const outAreaBtn = targetArea.querySelectorAll('button');
+      const outAreaInput = targetArea.querySelectorAll('input');
 
-        const outAreaBtn = outParents.querySelectorAll('button');
-        const outAreaInput = outParents.querySelectorAll('input');
-        for (const outBtn of outAreaBtn) {
-          outBtn.setAttribute('tabindex', -1);
+      if (this.dialog.open) {
+        targetArea.style.setProperty('pointer-events', 'none');
+        targetArea.setAttribute('aria-hidden', true);
+
+        for (const btn of outAreaBtn) {
+          btn.setAttribute('tabindex', -1);
         }
-        for (const outInput of outAreaInput) {
-          outInput.setAttribute('tabindex', -1);
+        for (const input of outAreaInput) {
+          input.setAttribute('tabindex', -1);
+        }
+        this.closeBtn.focus();
+      } else {
+        targetArea.style.setProperty('pointer-events', 'auto');
+        targetArea.setAttribute('aria-hidden', false);
+
+        for (const btn of outAreaBtn) {
+          btn.setAttribute('tabindex', 0);
+        }
+        for (const input of outAreaInput) {
+          input.setAttribute('tabindex', 0);
         }
       }
-      setTimeout(() => {
-        this.closeBtn.focus();
-      }, 0);
-    } else {
-      console.log('false');
     }
   }
 

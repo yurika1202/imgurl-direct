@@ -2,6 +2,7 @@
 
 .ly_main {
   display: grid;
+  position: relative;
   row-gap: 64px;
 
   @include mix.mq(sm) {

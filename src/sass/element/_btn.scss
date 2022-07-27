@@ -61,9 +61,9 @@
 .el_copyBtn {
   &::before,
   &::after {
+    display: none;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 0;
     transition: opacity 0.4s ease-out;
   }
 
@@ -80,7 +80,6 @@
   }
 
   &::after {
-    display: inline-block;
     position: absolute;
     top: 5%;
     width: 0;
@@ -94,7 +93,7 @@
   &.is_display {
     &::before,
     &::after {
-      opacity: 1;
+      display: inline-block;
     }
   }
 }
