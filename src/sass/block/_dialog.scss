@@ -14,6 +14,10 @@
   opacity: 1;
   transition: visibility 0.4s ease-out, opacity 0.4s ease-out;
 
+  &::backdrop {
+    background: rgba(58, 59, 80, 0.4);
+  }
+
   &:not([open]) {
     visibility: hidden;
     opacity: 0;

@@ -27,14 +27,25 @@ class Dialog {
   }
 
   close() {
+    // 閉じるボタンが押されたとき
     this.closeBtn.addEventListener('click', () => {
       this.dialog.close();
       this.setOutArea();
       this.fixBody();
     });
 
+    // Escapeキーが押されたとき
     window.addEventListener('keydown', e => {
       if (this.dialog.open && e.key === 'Escape') {
+        this.dialog.close();
+        this.setOutArea();
+        this.fixBody();
+      }
+    });
+
+    // モーダル外をクリックしたとき
+    this.dialog.addEventListener('click', e => {
+      if (e.target === this.dialog) {
         this.dialog.close();
         this.setOutArea();
         this.fixBody();
