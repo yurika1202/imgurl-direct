@@ -4,7 +4,6 @@ class Dialog {
     this.openBtn = document.body.querySelectorAll('.js_dialog_openBtn');
     this.closeBtn = document.getElementById('js_dialog_closeBtn');
     this.dialogContents = document.body.querySelector('.js_dialog_contents');
-    this.outArea = document.querySelectorAll('.js_dialog_outArea');
     this.fragment = document.createDocumentFragment();
     this.scrollPosition = '';
   }
@@ -20,7 +19,6 @@ class Dialog {
         this.scrollPosition = window.scrollY;
         this.createContents(targetBtn);
         this.dialog.showModal();
-        this.setOutArea();
         this.fixBody();
       });
     }
@@ -30,7 +28,6 @@ class Dialog {
     // 閉じるボタンが押されたとき
     this.closeBtn.addEventListener('click', () => {
       this.dialog.close();
-      this.setOutArea();
       this.fixBody();
     });
 
@@ -38,7 +35,6 @@ class Dialog {
     window.addEventListener('keydown', e => {
       if (this.dialog.open && e.key === 'Escape') {
         this.dialog.close();
-        this.setOutArea();
         this.fixBody();
       }
     });
@@ -47,40 +43,9 @@ class Dialog {
     this.dialog.addEventListener('click', e => {
       if (e.target === this.dialog) {
         this.dialog.close();
-        this.setOutArea();
         this.fixBody();
       }
     });
-  }
-
-  setOutArea() {
-    for (const targetArea of this.outArea) {
-      const outAreaBtn = targetArea.querySelectorAll('button');
-      const outAreaInput = targetArea.querySelectorAll('input');
-
-      if (this.dialog.open) {
-        targetArea.style.setProperty('pointer-events', 'none');
-        targetArea.setAttribute('aria-hidden', true);
-
-        for (const btn of outAreaBtn) {
-          btn.setAttribute('tabindex', -1);
-        }
-        for (const input of outAreaInput) {
-          input.setAttribute('tabindex', -1);
-        }
-        this.closeBtn.focus();
-      } else {
-        targetArea.style.setProperty('pointer-events', 'auto');
-        targetArea.setAttribute('aria-hidden', false);
-
-        for (const btn of outAreaBtn) {
-          btn.setAttribute('tabindex', 0);
-        }
-        for (const input of outAreaInput) {
-          input.setAttribute('tabindex', 0);
-        }
-      }
-    }
   }
 
   createContents(target) {
