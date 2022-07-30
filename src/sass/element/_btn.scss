@@ -1,5 +1,6 @@
 @use '../functions/' as *;
 @use '../variables/' as var;
+@use '../mixin/' as mix;
 
 .el_btn {
   display: inline-block;
@@ -38,6 +39,9 @@
       background: url(#{var.$img-path}twitter.svg) no-repeat center center / contain;
     }
   }
+
+  @include mix.hover() {
+  }
 }
 
 .el_dialogBtn {
@@ -50,50 +54,77 @@
   right: 0;
   height: 100%;
   padding: 0 1.2em;
+  overflow: hidden;
   transform: translateY(-50%);
   border-radius: 0 20px 20px 0;
   background: color(--c-white);
   font-weight: bold;
   font-size: rem(20px);
   font-family: font-family(font-en);
+
+  &::before {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    transform-origin: right top;
+    background: color(--c-accent, 0.4);
+    content: '';
+    transition: transform 0.4s ease-in-out;
+  }
+
+  @include mix.hover() {
+    &::before {
+      transform: translateX(0);
+      transform-origin: left top;
+    }
+  }
 }
 
 .el_copyBtn {
-  &::before,
-  &::after {
-    display: none;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: opacity 0.4s ease-out;
-  }
-
-  &::before {
+  + span {
+    display: block;
+    visibility: hidden;
     position: absolute;
     top: -40%;
-    padding: 0.25em 0.75em;
-    border-radius: 10px;
-    background: color(--c-base);
-    content: 'Copied!';
-    color: color(--c-white);
-    font-weight: 500;
-    font-size: rem(16px);
-  }
+    right: 37px;
+    opacity: 0;
+    transition: visibility 0.3s ease-out, opacity 0.3s ease-out;
 
-  &::after {
-    position: absolute;
-    top: 5%;
-    width: 0;
-    height: 0;
-    border-width: 12px 12px 0 12px;
-    border-style: solid;
-    border-color: color(--c-base) transparent transparent transparent;
-    content: '';
-  }
-
-  &.is_display {
     &::before,
     &::after {
       display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &::before {
+      position: absolute;
+      top: -40%;
+      padding: 0.25em 0.75em;
+      border-radius: 10px;
+      background: color(--c-base);
+      content: 'Copied!';
+      color: color(--c-white);
+      font-weight: 500;
+      font-size: rem(16px);
+    }
+
+    &::after {
+      position: absolute;
+      top: 32px;
+      width: 0;
+      height: 0;
+      border-width: 12px 12px 0 12px;
+      border-style: solid;
+      border-color: color(--c-base) transparent transparent transparent;
+      content: '';
+    }
+  }
+  &.is_display {
+    + span {
+      visibility: visible;
+      opacity: 1;
     }
   }
 }
@@ -134,5 +165,23 @@
     &:nth-of-type(2) {
       transform: rotate(-45deg);
     }
+  }
+}
+
+.el_hoverBtn_bounding {
+  @include mix.hover() {
+    animation: bounding 0.4s ease-in-out;
+  }
+}
+
+@keyframes bounding {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
