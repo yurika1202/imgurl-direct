@@ -2,6 +2,7 @@
 @use '../mixin/' as mix;
 
 .bl_dialogContents {
+  visibility: visible;
   z-index: 10;
   top: 50%;
   left: 50%;
@@ -12,13 +13,14 @@
   border-radius: 20px;
   background: color(--c-bg-contents, 0.9);
   opacity: 1;
-  transition: visibility 0.4s ease-out, opacity 0.4s ease-out;
+  transition: opacity 0.4s ease-out;
 
   &::backdrop {
     background: rgba(58, 59, 80, 0.4);
   }
 
   &:not([open]) {
+    display: block;
     visibility: hidden;
     opacity: 0;
   }
