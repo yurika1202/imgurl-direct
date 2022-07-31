@@ -18,4 +18,14 @@
   flex-shrink: 0;
   align-items: center;
   gap: 1em;
+
+  @include mix.mq(lg) {
+    margin-left: 24px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
 }
