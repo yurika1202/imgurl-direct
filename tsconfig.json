@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2021",
+
+    /* Modules */
+    "module": "esnext",
+    "rootDir": "./src/script",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    /* JavaScript Support */
+    "allowJs": true,
+
+    /* Emit */
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./docs/assets",
+    "removeComments": true,
+    "importsNotUsedAsValues": "error",
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  "include": ["src/script/**/*"],
+  "compileOnSave": false
+}
