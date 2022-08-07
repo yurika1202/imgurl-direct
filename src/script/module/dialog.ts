@@ -1,8 +1,10 @@
+import 'typed-query-selector';
+
 class Dialog {
-  #dialog = document.body.querySelector('.js_dialog') as HTMLDialogElement | null;
-  #openBtn = document.body.querySelectorAll('.js_dialog_openBtn') as NodeListOf<HTMLButtonElement> | null;
-  #closeBtn = document.querySelector('.js_dialog_closeBtn') as HTMLButtonElement | null;
-  #dialogContents = document.body.querySelector('.js_dialog_contents') as HTMLOListElement | null;
+  #dialog = document.body.querySelector('dialog.js_dialog');
+  #openBtn = document.body.querySelectorAll('button.js_dialog_openBtn');
+  #closeBtn = document.querySelector('button.js_dialog_closeBtn');
+  #dialogContents = document.body.querySelector('ol.js_dialog_contents');
   #fragment = document.createDocumentFragment();
   #scrollPosition: number = 0;
 
@@ -18,7 +20,7 @@ class Dialog {
   }
 
   #open() {
-    for (const targetBtn of this.#openBtn!) {
+    for (const targetBtn of this.#openBtn) {
       targetBtn.addEventListener('click', () => {
         this.#scrollPosition = window.scrollY;
         this.#createContents(targetBtn);

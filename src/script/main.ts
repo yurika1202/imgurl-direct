@@ -1,5 +1,5 @@
-import Dialog from './module/dialog';
-import Generate from './module/generate';
+import Dialog from './module/dialog.js';
+import Generate from './module/generate.js';
 
 function init() {
   new Dialog().action();
