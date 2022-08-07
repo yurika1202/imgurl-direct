@@ -3,19 +3,13 @@ import 'typed-query-selector';
 class Dialog {
   #dialog = document.body.querySelector('dialog.js_dialog');
   #openBtn = document.body.querySelectorAll('button.js_dialog_openBtn');
-  #closeBtn = document.querySelector('button.js_dialog_closeBtn');
-  #dialogContents = document.body.querySelector('ol.js_dialog_contents');
+  #dialogContents = document.body.querySelector('div.js_dialog_contents');
   #fragment = document.createDocumentFragment();
   #scrollPosition: number = 0;
 
   action() {
     if (this.#dialog != null) {
-      if (this.#openBtn != null) {
-        this.#open();
-      }
-      if (this.#closeBtn != null) {
-        this.#close();
-      }
+      this.#open();
     }
   }
 
@@ -30,9 +24,9 @@ class Dialog {
     }
   }
 
-  #close() {
+  #close(closeBtn: HTMLButtonElement) {
     // 閉じるボタンが押されたとき
-    this.#closeBtn!.addEventListener('click', () => {
+    closeBtn.addEventListener('click', () => {
       this.#dialog!.close();
       this.#fixBody();
     });
@@ -54,17 +48,47 @@ class Dialog {
     });
   }
 
-  #createContents(target: HTMLElement) {
+  #createContents(target: HTMLButtonElement) {
     if (this.#dialogContents != null) {
       // コンテンツの中身を空にしておく
       while (this.#dialogContents.firstChild) {
         this.#dialogContents.removeChild(this.#dialogContents.firstChild);
       }
 
-      for (let i = 0; i < 4; i += 1) {
-        const childElement = document.createElement('li');
-        this.#fragment.append(childElement);
+      // 閉じるボタンの作成
+      const closeBtn = document.createElement('button');
+      const closeBtnAttr = {
+        class: 'el_btn el_closeBtn js_dialog_closeBtn',
+        type: 'button',
+        'aria-label': '閉じる',
+      };
+      for (let attr of Object.entries(closeBtnAttr)) {
+        closeBtn.setAttribute(attr[0], attr[1]);
       }
+      for (let i = 0; i < 2; i += 1) {
+        const span = document.createElement('span');
+        closeBtn.appendChild(span);
+      }
+
+      // ステップリストの作成
+      const ol = document.createElement('ol');
+      ol.className = 'bl_dialog_generateStep';
+      for (let i = 0; i < 4; i += 1) {
+        const li = document.createElement('li');
+        ol.appendChild(li);
+      }
+
+      // メッセージの作成
+      const p = document.createElement('p');
+      p.className = 'bl_dialog_message';
+      const message = document.createTextNode('Have fun !!!');
+      p.appendChild(message);
+
+      // DocumentFragmentからDOMへ追加し、閉じるボタンへイベント登録
+      this.#fragment.append(closeBtn, ol, p);
+      this.#dialogContents.appendChild(this.#fragment);
+      this.#close(closeBtn);
+
       if (this.#fragment.hasChildNodes() && this.#fragment.childElementCount === 4) {
         if (target.classList.contains('__google')) {
           this.#fragment.children[0]!.textContent = 'GoogleDriveへ画像をアップロード';
