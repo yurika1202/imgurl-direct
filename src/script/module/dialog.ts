@@ -77,6 +77,17 @@ class Dialog {
         const li = document.createElement('li');
         ol.appendChild(li);
       }
+      if (ol.hasChildNodes() && ol.childElementCount === 4) {
+        if (target.classList.contains('__google')) {
+          ol.children[0]!.textContent = 'GoogleDriveへ画像をアップロード';
+          ol.children[1]!.textContent = '画像を選択し、「リンクを取得」から画像リンクをコピー';
+        } else if (target.classList.contains('__dropbox')) {
+          ol.children[0]!.textContent = 'DropBoxへ画像をアップロード';
+          ol.children[1]!.textContent = '画像を選択し、「リンクをコピー」から画像リンクをコピー';
+        }
+        ol.children[2]!.textContent = 'このページに戻ってきて、取得してきたリンクを貼り付ける';
+        ol.children[3]!.textContent = '生成されたURLをコピー';
+      }
 
       // メッセージの作成
       const p = document.createElement('p');
@@ -84,26 +95,10 @@ class Dialog {
       const message = document.createTextNode('Have fun !!!');
       p.appendChild(message);
 
-      // DocumentFragmentからDOMへ追加し、閉じるボタンへイベント登録
+      // DocumentFragmentからDOMへの追加と閉じるボタンのイベント登録
       this.#fragment.append(closeBtn, ol, p);
       this.#dialogContents.appendChild(this.#fragment);
       this.#close(closeBtn);
-
-      if (this.#fragment.hasChildNodes() && this.#fragment.childElementCount === 4) {
-        if (target.classList.contains('__google')) {
-          this.#fragment.children[0]!.textContent = 'GoogleDriveへ画像をアップロード';
-          this.#fragment.children[1]!.textContent = '画像を選択し、「リンクを取得」から画像リンクをコピー';
-          this.#fragment.children[2]!.textContent = 'このページに戻ってきて、取得してきたリンクを貼り付ける';
-          this.#fragment.children[3]!.textContent = '生成されたURLをコピー';
-          this.#dialogContents!.append(this.#fragment);
-        } else if (target.classList.contains('__dropbox')) {
-          this.#fragment.children[0]!.textContent = 'DropBoxへ画像をアップロード';
-          this.#fragment.children[1]!.textContent = '画像を選択し、「リンクをコピー」から画像リンクをコピー';
-          this.#fragment.children[2]!.textContent = 'このページに戻ってきて、取得してきたリンクを貼り付ける';
-          this.#fragment.children[3]!.textContent = '生成されたURLをコピー';
-          this.#dialogContents!.append(this.#fragment);
-        }
-      }
     }
   }
 
