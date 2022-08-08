@@ -151,18 +151,19 @@
 
   > span {
     display: inline-block;
-    position: absolute;
-    top: 36%;
-    left: 48%;
+    position: relative;
+    top: -1px;
     width: 2px;
     height: 12px;
     background: color(--c-accent);
 
     &:nth-of-type(1) {
+      left: 1px;
       transform: rotate(45deg);
     }
 
     &:nth-of-type(2) {
+      left: -1px;
       transform: rotate(-45deg);
     }
   }
