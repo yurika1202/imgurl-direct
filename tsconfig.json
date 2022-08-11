@@ -31,7 +31,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
-    "types": ["typed-query-selector/strict"],
 
     /* Completeness */
     "skipLibCheck": true
