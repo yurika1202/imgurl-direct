@@ -1,5 +1,4 @@
-import 'typed-query-selector/strict';
-
+import type {} from 'typed-query-selector/strict';
 /**
  * Retrieve the input link and convert it to a direct link.
  */
@@ -12,11 +11,11 @@ class Generate {
   #errorMsg = document.body.querySelectorAll('p.js_generate_pasteError');
 
   action() {
-    if (this.#generate != null) {
-      if (this.#pasteInput != null && this.#executionBtn != null) {
+    if (this.#generate.length !== 0) {
+      if (this.#pasteInput.length !== 0 && this.#executionBtn.length !== 0) {
         this.#replaceAction();
       }
-      if (this.#copyInput != null && this.#copyBtn != null) {
+      if (this.#copyInput.length !== 0 && this.#copyBtn.length !== 0) {
         this.copy();
       }
     }
@@ -31,7 +30,7 @@ class Generate {
      */
     this.#executionBtn.forEach(target => {
       target.addEventListener('click', () => {
-        const input = target.parentNode?.querySelector('input');
+        const input = target.parentNode!.querySelector('input');
         if (input != null) {
           this.#replace(target, input.value);
         }
@@ -102,7 +101,7 @@ class Generate {
   copy() {
     for (const target of this.#copyBtn) {
       target.addEventListener('click', () => {
-        const input = target.parentNode?.querySelector('input');
+        const input = target.parentNode!.querySelector('input');
         if (input != null && input.value !== '') {
           navigator.clipboard
             .writeText(input.value)

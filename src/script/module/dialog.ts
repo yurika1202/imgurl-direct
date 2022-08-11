@@ -1,4 +1,4 @@
-import 'typed-query-selector/strict';
+import type {} from 'typed-query-selector/strict';
 
 /**
  * Controls the display and hiding of dialogs.

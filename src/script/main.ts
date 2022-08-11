@@ -1,3 +1,4 @@
+import type {} from 'typed-query-selector';
 import Dialog from './module/dialog';
 import Generate from './module/generate';
 
