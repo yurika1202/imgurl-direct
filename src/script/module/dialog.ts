@@ -1,5 +1,8 @@
-import 'typed-query-selector';
+import 'typed-query-selector/strict';
 
+/**
+ * Controls the display and hiding of dialogs.
+ */
 class Dialog {
   #dialog = document.body.querySelector('dialog.js_dialog');
   #openBtn = document.body.querySelectorAll('button.js_dialog_openBtn');
@@ -13,25 +16,38 @@ class Dialog {
     }
   }
 
+  /**
+   * dialog is open.
+   */
   #open() {
-    for (const targetBtn of this.#openBtn) {
-      targetBtn.addEventListener('click', () => {
-        this.#scrollPosition = window.scrollY;
-        this.#createContents(targetBtn);
-        this.#dialog!.showModal();
-        this.#fixBody();
-      });
+    if (this.#openBtn.length !== 0) {
+      for (const targetBtn of this.#openBtn) {
+        targetBtn.addEventListener('click', () => {
+          this.#scrollPosition = window.scrollY;
+          this.#createContents(targetBtn);
+          this.#dialog!.showModal();
+          this.#fixBody();
+        });
+      }
     }
   }
 
+  /**
+   * dialog is close.
+   * @param closeBtn - Event target button for closing the dialog.
+   */
   #close(closeBtn: HTMLButtonElement) {
-    // 閉じるボタンが押されたとき
+    /**
+     * Event - Close button pressed.
+     */
     closeBtn.addEventListener('click', () => {
       this.#dialog!.close();
       this.#fixBody();
     });
 
-    // Escapeキーが押されたとき
+    /**
+     * Event - Escape Key pressed.
+     */
     window.addEventListener('keydown', e => {
       if (this.#dialog!.open && e.key === 'Escape') {
         this.#dialog!.close();
@@ -39,7 +55,9 @@ class Dialog {
       }
     });
 
-    // モーダル外をクリックしたとき
+    /**
+     * Event - Outside of dialog pressed.
+     */
     this.#dialog!.addEventListener('click', e => {
       if (e.target === this.#dialog) {
         this.#dialog!.close();
@@ -48,14 +66,17 @@ class Dialog {
     });
   }
 
+  /**
+   * Generate dialog content.
+   * @param target - Open Target dialog button.
+   */
   #createContents(target: HTMLButtonElement) {
     if (this.#dialogContents != null) {
-      // コンテンツの中身を空にしておく
       while (this.#dialogContents.firstChild) {
         this.#dialogContents.removeChild(this.#dialogContents.firstChild);
       }
 
-      // 閉じるボタンの作成
+      // create closeBtn.
       const closeBtn = document.createElement('button');
       const closeBtnAttr = {
         class: 'el_btn el_closeBtn js_dialog_closeBtn',
@@ -70,7 +91,7 @@ class Dialog {
         closeBtn.appendChild(span);
       }
 
-      // ステップリストの作成
+      // create stepList.
       const ol = document.createElement('ol');
       ol.className = 'bl_dialog_generateStep';
       for (let i = 0; i < 4; i += 1) {
@@ -89,19 +110,22 @@ class Dialog {
         ol.children[3]!.textContent = '生成されたURLをコピー';
       }
 
-      // メッセージの作成
+      // create message.
       const p = document.createElement('p');
       p.className = 'bl_dialog_message';
       const message = document.createTextNode('Have fun !!!');
       p.appendChild(message);
 
-      // DocumentFragmentからDOMへの追加と閉じるボタンのイベント登録
+      //Add to DOM from DocumentFragment and register event for close button.
       this.#fragment.append(closeBtn, ol, p);
       this.#dialogContents.appendChild(this.#fragment);
       this.#close(closeBtn);
     }
   }
 
+  /**
+   * Scroll control when opening and closing dialogs.
+   */
   #fixBody() {
     const html = document.querySelector('html');
     if (html != null) {
