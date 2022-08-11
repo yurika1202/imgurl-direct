@@ -1,5 +1,8 @@
-import 'typed-query-selector';
+import 'typed-query-selector/strict';
 
+/**
+ * Retrieve the input link and convert it to a direct link.
+ */
 class Generate {
   #generate = document.body.querySelectorAll('div.js_generate');
   #pasteInput = document.body.querySelectorAll('input.js_generate_pasteInput');
@@ -19,8 +22,13 @@ class Generate {
     }
   }
 
+  /**
+   * Conversion Execution.
+   */
   #replaceAction() {
-    // 実行ボタンをクリックでイベント発火
+    /**
+     * Event - Execute button pressed.
+     */
     this.#executionBtn.forEach(target => {
       target.addEventListener('click', () => {
         const input = target.parentNode?.querySelector('input');
@@ -30,7 +38,9 @@ class Generate {
       });
     });
 
-    // Enterキーでイベント発火
+    /**
+     * Event - Enter key pressed.
+     */
     this.#pasteInput.forEach(target => {
       target.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
@@ -40,6 +50,11 @@ class Generate {
     });
   }
 
+  /**
+   * Replace with direct link and create validation message.
+   * @param target - Inputs with links entered.
+   * @param val - Link info.
+   */
   #replace(target: HTMLElement, val: string) {
     // GoogleDrive
     if (target.closest('.__google') && this.#errorMsg[0] != null) {
@@ -81,6 +96,9 @@ class Generate {
     }
   }
 
+  /**
+   * Copy to clipboard.
+   */
   copy() {
     for (const target of this.#copyBtn) {
       target.addEventListener('click', () => {
